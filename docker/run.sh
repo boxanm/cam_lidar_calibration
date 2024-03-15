@@ -1,48 +1,8 @@
 #!/bin/bash
 
 # Default setting
-CUDA="on"
+CUDA="off"
 
-function usage() {
-    echo "Usage: $0 [OPTIONS]"
-    echo "    -c,--cuda <on|off>           Enable Cuda support in the Docker."
-    echo "                                 Default:$CUDA"
-    echo "    -h,--help                    Display the usage and exit."
-}
-
-OPTS=`getopt --options c:h \
-         --long cuda:,help \
-         --name "$0" -- "$@"`
-eval set -- "$OPTS"
-
-while true; do
-  case $1 in
-    -c|--cuda)
-      param=$(echo $2 | tr '[:upper:]' '[:lower:]')
-      case "${param}" in
-        "on"|"off") CUDA="${param}" ;;
-        *) echo "Invalid cuda option: $2"; exit 1 ;;
-      esac
-      shift 2
-      ;;
-    -h|--help)
-      usage
-      exit 0
-      ;;
-    --)
-	if [ ! -z $2 ];
-      then
-        echo "Invalid parameter: $2"
-        exit 1
-      fi
-      break
-      ;;
-    *)
-      echo "Invalid option"
-      exit 1
-      ;;
-  esac
-done
 
 if [ $CUDA == "on" ]; 
 then
@@ -74,4 +34,4 @@ $ENVS \
 --privileged \
 --net=host \
 --workdir="/catkin_ws/src" \
-darrenjkt/cam_lidar_calibration:latest-melodic /bin/bash
+darrenjkt/cam_lidar_calibration:latest-noetic /bin/bash
