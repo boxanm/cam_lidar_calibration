@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /opt/ros/melodic/setup.bash
-catkin build
+source /opt/ros/noetic/setup.bash
+catkin_make
 source /catkin_ws/devel/setup.bash
 exec "$@"
