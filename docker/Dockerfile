@@ -61,6 +61,8 @@ RUN apt-get update && \
                  ros-noetic-cv-bridge \
                   ros-noetic-image-transport \
                   ros-noetic-rviz \
+                  ros-noetic-rqt \
+                  ros-noetic-rqt-reconfigure \
                    ros-noetic-eigen-conversions \
                    ros-noetic-tf-conversions
 
