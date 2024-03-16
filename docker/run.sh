@@ -25,9 +25,10 @@ VOLUMES="--volume=$XSOCK:$XSOCK
 		 --volume=$XAUTH:/home/$(id -un)/.Xauthority
 		 --volume=${PWD}/..:/catkin_ws/src/cam_lidar_calibration"
 
-xhost +local:docker
+# xhost +local:docker
 
 docker run \
+--name cam_lidar_calibration \
 -it --rm \
 $VOLUMES \
 $ENVS \
